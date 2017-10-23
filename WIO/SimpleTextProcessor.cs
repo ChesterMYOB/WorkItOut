@@ -5,6 +5,17 @@ namespace WorkItOut.UnitTest
 {
     public class SimpleTextProcessor
     {
+        public SimpleTextConfiguration SimpleTextConfiguration { set; get; }
+        public List<Workout> ProcessInput(string workout)
+        {
+            var workoutComponents = SeparateComponents(workout);
+            workoutComponents.TryGetValue(InputComponent.Date, out var date);
+            workoutComponents.TryGetValue(InputComponent.Weight, out var weight);
+            workoutComponents.TryGetValue(InputComponent.Exercise, out var exercise);
+            return null;
+        }
+
+
         public Dictionary<InputComponent, string> SeparateComponents(string simpleInput)
         {
             var inputArray = simpleInput.Split('\n');
