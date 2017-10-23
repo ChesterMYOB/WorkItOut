@@ -16,10 +16,17 @@ namespace WorkItOut.UnitTest
             };
         }
 
-        public DateTime ProcessDate(string shortenedDate)
+        public DateTime ProcessDate(string date)
         {
-            var dateComponents = shortenedDate.Split('/');
+            var dateComponents = date.Split('/');
             return new DateTime(DateTime.UtcNow.Year, int.Parse(dateComponents[1]), int.Parse(dateComponents[0]));
+        }
+
+        public Exercise ProcessExercise(string workout)
+        {
+            var exercise = new Exercise();
+            exercise.ConvertStringToExercise(workout);
+            return exercise;
         }
     }
 }

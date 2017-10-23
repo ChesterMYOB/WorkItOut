@@ -61,7 +61,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Exercise.cs" />
     <Compile Include="InputComponent.cs" />
+    <Compile Include="Set.cs" />
     <Compile Include="SimpleTextProcessor.cs" />
     <Compile Include="SimpleTextProcessorShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
