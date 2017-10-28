@@ -1,10 +1,10 @@
 ﻿namespace WorkItOut.UnitTest
 {
-    public enum InputComponent
+    public enum GymComponent
     {
         Date = 'D',
         Weight = 'W',
-        Exercise = 'E'
+        Exercises = 'E'
 
     }
 }

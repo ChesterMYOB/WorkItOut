@@ -1,23 +1,21 @@
 ﻿namespace WorkItOut.UnitTest
 {
-    public class Set
+    public class StrengthSet
     {
-        public string Repetitions { set; get; }
-        public string Weight { set; get; }
+        public int Repetitions { set; get; }
+        public double Weight { set; get; }
 
-        public Set(string repetitions, string weight)
+        public StrengthSet(int repetitions, double weight)
         {
             Repetitions = repetitions;
             Weight = weight;
         }
 
-        public Set()
-        {
-        }
 
         public override bool Equals(object obj)
+
         {
-            if (!(obj is Set item))
+            if (!(obj is StrengthSet item))
             {
                 return false;
             }
