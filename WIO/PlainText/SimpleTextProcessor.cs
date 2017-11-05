@@ -28,7 +28,7 @@ namespace WorkItOut.UnitTest
             // TODO Ordering dictates the component's arrangement
 
             var workoutComponents = SeparateComponents(workout);
-            return ProcessComponents(workoutComponents);
+            return ProcessGymComponents(workoutComponents);
         }
 
         public Dictionary<GymComponent, string> SeparateComponents(string simpleInput)
@@ -42,7 +42,7 @@ namespace WorkItOut.UnitTest
             };
         }
 
-        public Workout ProcessComponents(Dictionary<GymComponent, string> workoutComponents)
+        public Workout ProcessGymComponents(Dictionary<GymComponent, string> workoutComponents)
         {
             workoutComponents.TryGetValue(GymComponent.Date, out var date);       
             workoutComponents.TryGetValue(GymComponent.Weight, out var weight);
@@ -55,7 +55,7 @@ namespace WorkItOut.UnitTest
             };
         }
 
-
+        //TODO This can be removed when interfaces are created
         public DateTime ProcessDate(string date)
         {
             var dateGenerator = new DateGenerator();
@@ -71,7 +71,8 @@ namespace WorkItOut.UnitTest
         public List<Exercise> ProcessExercise(string exercises)
         {
             var exerciseGenerator = new ExerciseGenerator();
-            return exerciseGenerator.CreateExercisesFromString(exercises);
+            return exerciseGenerator.CreateExercises(exercises);
         }
+        // TODO ^^
     }
 }

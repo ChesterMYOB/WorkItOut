@@ -8,28 +8,46 @@ using WorkItOut.UnitTest;
 
 namespace WIO.Generator
 {
-    class ExerciseGenerator
+    public class ExerciseGenerator
     {
-        public List<Exercise> CreateExercisesFromString(string exercises)
-        {
-            var newCharacterPattern = @"\s+(?=\d)"; // Separate by new char
-            var workoutSession = new List<Exercise>();
-            var exerciseArray = exercises.Split('\n');
-            foreach (string exercise in exerciseArray)
-            {
-                var exerciseComponents = Regex.Split(exercise, newCharacterPattern);
-                var singleExercise = new Exercise
-                {
-                    Name = exerciseComponents[0],
-                    Sets = ConvertSets(exerciseComponents[1])
-                };
-                workoutSession.Add(singleExercise);
 
+        //This is just psudo-code
+        //public List<Exercise> CreateExercises(string exercises)
+        //{
+            // Separate out the exercises
+            // Separate out the name and the sets - reps - wight
+            // Group reps and sets and add them to the list which becomes the reps
+            // Create the exercise object with a name and it's sets
+            // Repeat and return the list of exercises
+        //    return null;
+        //}
+
+
+
+
+
+        public List<Exercise> CreateExercises(string exercises)
+        {         
+            var exerciseList = new List<Exercise>();
+            var exerciseArray = exercises.Split('\n');
+            foreach (var exercise in exerciseArray)
+            {
+                exerciseList.Add(CreateExercise(exercise));
             }
-            return workoutSession;
+            return exerciseList;
         }
 
-
+        public Exercise CreateExercise(string exercise)
+        {
+            var newCharacterPattern = @"\s+(?=\d)"; // Separate by new char
+            var exerciseComponents = Regex.Split(exercise, newCharacterPattern);
+            var singleExercise = new Exercise
+            {
+                Name = exerciseComponents[0],
+                Sets = ConvertSets(exerciseComponents[1])
+            };
+            return singleExercise;
+        }
 
         private List<StrengthSet> ConvertSets(string sets)
         {

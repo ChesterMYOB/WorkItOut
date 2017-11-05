@@ -64,6 +64,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Generator.Test\DateGeneratorShould.cs" />
+    <Compile Include="Generator.Test\ExerciseGeneratorShould.cs" />
+    <Compile Include="Generator.Test\WeightGeneratorShould.cs" />
     <Compile Include="SimpleTextProcessorShould.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

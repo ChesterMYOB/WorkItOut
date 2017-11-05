@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace WIO.Generators
 {
-    class DateGenerator
+public class DateGenerator
     {
         public DateTime CreateDateFromString(string date)
         {

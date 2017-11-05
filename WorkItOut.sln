@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26730.15
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIO", "WIO\WIO.csproj", "{6C5D670C-ADFF-43F9-A565-42E1872C0BD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIO.UnitTests", "WIO.UnitTests\WIO.UnitTests.csproj", "{B443F7BF-D62C-4614-9AEB-D65D54AAD43D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WIO.UnitTest", "WIO.UnitTests\WIO.UnitTest.csproj", "{B443F7BF-D62C-4614-9AEB-D65D54AAD43D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
