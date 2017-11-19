@@ -5,7 +5,7 @@
         public int Repetitions { set; get; }
         public double Weight { set; get; }
 
-        public StrengthSet(int repetitions, double weight)
+        public StrengthSet(double weight, int repetitions)
         {
             Repetitions = repetitions;
             Weight = weight;

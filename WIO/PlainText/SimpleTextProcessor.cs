@@ -71,7 +71,7 @@ namespace WorkItOut.UnitTest
         public List<Exercise> ProcessExercise(string exercises)
         {
             var exerciseGenerator = new ExerciseGenerator();
-            return exerciseGenerator.CreateExercises(exercises);
+            return exerciseGenerator.CreateExerciseCollection(exercises);
         }
         // TODO ^^
     }

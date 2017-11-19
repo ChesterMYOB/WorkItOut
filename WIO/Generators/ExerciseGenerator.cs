@@ -10,52 +10,52 @@ namespace WIO.Generator
 {
     public class ExerciseGenerator
     {
+        private readonly char _exerciseSeparator = '\n';
+        private readonly string _componentSeparator = @"\s+(?=\d)";
+        private readonly char _setSeparator = ',';
+        private readonly char _multiSetSeparator = ':';
 
-        //This is just psudo-code
-        //public List<Exercise> CreateExercises(string exercises)
-        //{
-            // Separate out the exercises
-            // Separate out the name and the sets - reps - wight
-            // Group reps and sets and add them to the list which becomes the reps
-            // Create the exercise object with a name and it's sets
-            // Repeat and return the list of exercises
-        //    return null;
-        //}
-
-
-
-
-
-        public List<Exercise> CreateExercises(string exercises)
-        {         
-            var exerciseList = new List<Exercise>();
-            var exerciseArray = exercises.Split('\n');
-            foreach (var exercise in exerciseArray)
-            {
-                exerciseList.Add(CreateExercise(exercise));
-            }
-            return exerciseList;
+        public List<Exercise> CreateExerciseCollection(string exercises)
+        {
+            var exerciseArray = exercises.Split(_exerciseSeparator);
+            return exerciseArray.Select(CreateExercise).ToList();
         }
 
         public Exercise CreateExercise(string exercise)
         {
-            var newCharacterPattern = @"\s+(?=\d)"; // Separate by new char
-            var exerciseComponents = Regex.Split(exercise, newCharacterPattern);
-            var singleExercise = new Exercise
+            var exerciseComponents = Regex.Split(exercise, _componentSeparator);
+            var createdExercise = new Exercise
             {
                 Name = exerciseComponents[0],
-                Sets = ConvertSets(exerciseComponents[1])
+                Sets = ExtractSets(exerciseComponents[1])
             };
-            return singleExercise;
+            return createdExercise;
         }
 
-        private List<StrengthSet> ConvertSets(string sets)
+        private List<StrengthSet> ExtractSets(string sets)
         {
-            var setComponents = sets.Split(',');
             var strengthSets = new List<StrengthSet>();
-            for (int i = 0; i < setComponents.Length; i += 2)
+            var setComponents = sets.Split(_setSeparator); 
+            
+            for (var i = 0; i < setComponents.Length; i+=2)
             {
-                strengthSets.Add(new StrengthSet(int.Parse(setComponents[i]), double.Parse(setComponents[i + 1])));
+                if (setComponents[i].Contains(_multiSetSeparator))
+                {
+                    var multiSet = setComponents[i].Split(_multiSetSeparator);
+                    var repeats = int.Parse(multiSet[0]);
+                    var weight = double.Parse(multiSet[1]);
+                    var reps = int.Parse(setComponents[i + 1]);
+
+                    for (var j = 0; j < repeats; j++)
+                    {
+                        strengthSets.Add(new StrengthSet(weight, reps));
+                    }
+                }
+                else
+                {
+                    strengthSets.Add(new StrengthSet(double.Parse(setComponents[i]), int.Parse(setComponents[i + 1])));
+
+                }
             }
             return strengthSets;
 
